@@ -4,12 +4,12 @@
 }
 
 .sidenav{
-    width: 250px;
+    width: 230px;
     height: 100vh;
     top: 0;
     background:#f5b7b1;
     position: fixed;
-    left: -250px;
+    left: -230px;
     z-index: 2;    
 }
 
@@ -22,9 +22,9 @@
     }
 
     .fa-arrow-left{
-         margin-top: 20px;
+         margin-top: 50px;
          color: white;
-         margin-left: 30px;
+         margin-left: 40px;
         
     }
 
@@ -36,19 +36,20 @@
 
     .sideimageS{
         overflow: hidden;
+        width: 170px;
     }
 
     .side-img-container{
         display: flex;
-        width: 200%;
+        width: 500%;
         position: relative;
         animation: 15s slider infinite;
     }
     .sidenav #sideimage{
-        width: 150px;
+        width: 160px;
         height: 130px;
         margin-top: 10px;
-        padding: 10px;
+        padding: 5px;
         background: white;
         
     }
@@ -61,39 +62,39 @@
             left: 0;
         }
         25% {
-            left: -40%;
+            left: -100%;
         }
         45% {
-            left: -40%;
+            left: -100%;
         }
         50%{
-            left: -80%;
+            left: -200%;
         }
         70%{
-            left: -80%;
+            left: -200%;
         }
         75%{
-            left: -120%;
+            left: -300%;
         }
         95%{
-            left: -120%;
+            left: -300%;
         }
         100%{
-            left: -160%;
+            left: -400%;
         }   
     }
 
     .content p{
         color: white;
         font-size: 15px;
-        line-height:15px;
+        line-height:20px;
         
     }
 
     .content small{
         font-style: italic;
         color: white;
-        line-height:15px;
+        line-height:20px;
         margin-top: 50px;   
     }
 
@@ -414,7 +415,8 @@
         }
 
         .sideimageS{
-            overflow: hidden;
+            overflow: hidden; 
+             width: 250px;
         }
 
         .fa-arrow-left{
