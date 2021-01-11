@@ -18,7 +18,7 @@
     background-color: rgb(255, 255, 255, .2);
     color:#fff;
     border-radius: 5%;
-    height: 70%;
+    height: 68%;
     width: 85%;
     position: absolute;
     top: 50%;
@@ -45,7 +45,7 @@
     width: 100%;
     margin-bottom: 10px;
     border-radius: 50px;
-    height: 30px;
+    height: 40px;
     border: 1px solid #fff;
     background: transparent;
     outline: none;
