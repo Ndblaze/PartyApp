@@ -8,7 +8,7 @@
     height: 500px;
     top: 0;
     background:#f5b7b1;
-    position: fixed;
+    position: absolute;
     left: -250px;    
 }
 
@@ -129,7 +129,6 @@
     #container{
         background:#fff;
         margin: 1% auto;
-        padding: 1%;
     }
 
     .header{
@@ -183,7 +182,7 @@
     }
 
     .row{
-        width: 85%;
+        width: 90%;
         margin: auto;
         align-items: center;
         justify-content: space-around;
@@ -196,6 +195,7 @@
 
     .right-col{
         width: 100%;
+        padding-left: 3%;
     }
 
     .flier-box{
