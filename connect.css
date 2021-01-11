@@ -8,9 +8,9 @@
     height: 100vh;
     top: 0;
     background:#f5b7b1;
-    position: absolute;
     position: fixed;
-    left: -250px;    
+    left: -250px;
+    z-index: 2;    
 }
 
 .content{
@@ -29,9 +29,9 @@
     }
 
     .content #logo{
-        width: 100px;
-        height: 100px;
-        margin-left: 1%;
+        width: 150px;
+        height: 150px;
+        margin-left: 2%;
     }
 
     .sideimageS{
