@@ -1,0 +1,726 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.sidenav{
+    height: 100vh;
+    width: 300px;
+    top: 0;
+    background:#f5b7b1;
+    position: fixed;
+    left: -300px;    
+}
+
+.content{
+    padding: 15px;
+    }
+    
+    .top{
+        display: flex;
+
+    }
+
+    .fa-arrow-left{
+         margin-top: 50px;
+         color: white;
+         margin-left: 20px;
+        
+    }
+
+    .content #logo{
+        width: 200px;
+        margin-left: 5%;
+    }
+
+    .sideimageS{
+        overflow: hidden;
+    }
+
+    .side-img-container{
+        display: flex;
+        width: 500%;
+        position: relative;
+        animation: 15s slider infinite;
+    }
+    .sidenav #sideimage{
+        width: 250px;
+        height: 230px;
+        margin-top: 10px;
+        padding: 10px;
+        background: white;
+        
+    }
+
+    @keyframes slider{
+        0% {
+              left: 0;
+        }
+        20%{
+            left: 0;
+        }
+        25% {
+            left: -100%;
+        }
+        45% {
+            left: -100%;
+        }
+        50%{
+            left: -200%;
+        }
+        70%{
+            left: -200%;
+        }
+        75%{
+            left: -300%;
+        }
+        95%{
+            left: -300%;
+        }
+        100%{
+            left: -400%;
+        }   
+    }
+
+    .content p{
+        color: white;
+        font-size: 18px;
+        line-height:20px;
+        
+    }
+
+    .content small{
+        font-style: italic;
+        color: white;
+        line-height:20px;
+        margin-top: 50px;   
+    }
+
+    #myParties{
+        display: none;
+    }
+    .common-btn{
+        padding: 6px 10px;
+        background:transparent;
+        color: #fff;
+        outline: none;
+        border: 1px solid #fff;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 40px;
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 17px;
+        
+    }
+
+    .common-btn:hover{
+        background:rgba(0, 0, 0, 0.1);
+        outline: none;
+        border:none;
+        border-radius: 40px;
+    }
+
+    #home-btn{
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+
+    #container{
+        background:#fff;
+        margin: 1% auto;
+        padding: 1%;
+    }
+
+    .header{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        border-bottom: 2px solid #f5b7b1;
+        border-radius: 10px;
+        padding-bottom: 10px ;
+        width: 90%;
+        margin-left: 4%;
+    }
+
+    .header h1{
+        color: #f5b7b1;
+        font-size: 30px;
+        margin-left: 10%;
+        
+    }
+
+    #menu-btn{
+        width: 40px;
+        margin-left: 10%;
+        cursor: pointer;
+        color: #f5b7b1;
+        font-size: 30px;
+    }
+
+    #add-flier{
+        display: none;
+        align-items: center;
+        right: 0;
+        margin-right: 5%;
+        bottom: 60px;
+        position: fixed;
+        transition: 0.3s;
+    }
+
+    #add-flier:hover{
+        transform: translateY(-10px);
+    }
+
+    #add-flier p{
+        color: #f5b7b1;
+        font-style: italic;
+    }
+
+    #add-flier img{
+        width: 50px;
+        margin: 10px;
+    }
+
+    .row{
+        width: 85%;
+        margin: auto;
+        align-items: center;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .left-col{
+        width: 100%;
+    }
+
+    .right-col{
+        width: 100%;
+    }
+
+    .flier-box{
+        background: white;
+        transition: 0.5s;
+        margin: 10px;
+        height: 350px;
+        border-radius: 8px;
+        box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.5),
+                    15px 15px 15px rgba(0, 0, 0, 0.1), 
+                    inset -5px -5px 5px  rgba(255, 255, 255, 0.5),
+                    inset 5px 5px 5px  rgba(0, 0, 0, 0.1) ;
+    }
+
+    .flier-box:hover{
+        transform: translateY(-5px);
+    }
+
+    .slide{
+        padding: 5px;
+    }
+
+    .slide img{
+        width: 100%;
+        height: 97%;
+    }
+
+    .rating i{
+        color: #f5b7b1;
+    }
+
+
+    /* pup up creat party */
+
+    #pupModal{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: fixed;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+        display: none;
+    }
+
+    .modal-content{
+        width: 300px;
+        height: 420px;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        border-radius: 4px;
+        position: relative;
+    }
+
+    #pupModal #poster{
+        border: none;
+        margin: 0 auto;
+        padding-bottom: 10px;
+        
+    }
+
+    #pupModal input{
+        width: 90%;
+        display: block;
+        margin: 5px auto;
+        height: 35px;
+        padding: 10px;
+        border: 1px solid #f5b7b1;
+        outline: none;
+        border-radius: 10px;
+        font-size: 12px;
+        color: #f5b7b1;
+    }
+
+    #pupModal #flier_img{
+        border: none;
+        margin-bottom: 10px;
+        height: 130px;
+        width: 130px;
+    }
+
+    #pupModal #creatPartyBtn{
+        padding: 12px 20px;
+        width: 150px;
+        background:#f5b7b1;
+        color: white;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 50px;
+    }
+
+    #close{
+        top: 0;
+        position: absolute;
+        right: 14px;
+        font-size: 42px;
+        transform: rotate(45deg);
+        cursor: pointer;
+        font-weight: bold;
+    } 
+
+    /* all account details */ 
+
+    #Account-details{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        position: fixed;
+        top: 0;
+        justify-content: center;
+        align-items: center; 
+        display: none;
+    }
+
+    #detail-content{  
+    background: white;
+    border-radius: 8px;
+    height: 75%;
+    width: 85%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); 
+    
+    }
+
+    #my_party{
+        width: 100%;
+        margin: 40px auto;
+    }
+
+    #my_party .row{
+        width: 90%;
+        margin: auto;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    #my_party .row .flier-box{
+        height: 50%; 
+    }
+ 
+    #my_party .left-col{
+        width: 100%;
+    }
+    #my_party .right-col{
+        width: 100%;
+    }
+
+    #my_party button{
+        padding: 6px 10px;
+        background:#f5b7b1;
+        color: #fff;
+        outline: none;
+        border: 1px solid #fff;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 40px;
+        margin-top: 10px;
+        margin-left: 5px;
+        font-size: 17px;
+        
+    }
+
+    #my_party button:hover{ 
+        background:rgba(0, 0, 0, 0.3);
+        
+        border:none;
+        border-radius: 40px;
+    }
+
+    #my_party #formart-btn{
+        text-align:center;
+    }
+
+
+/* the screen of an ipad which is 768px to 1024px*/
+
+@media only screen and (min-width: 768px){
+    .sidenav{
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        background:#f5b7b1;
+        position: fixed;  
+    }
+}
+
+/* the screen of a laptop*/
+
+@media only screen and (min-width: 1024px){
+    
+
+        .sidenav{
+            height: 100vh;
+            width: 300px;
+            top: 0;
+            background:#f5b7b1;
+            position: fixed; 
+            left: 0; 
+        }
+
+        .content{
+        padding: 15px;
+        }
+
+        .content #logo{
+            width: 210px;
+            margin-left: 10%;
+        }
+
+        .sideimageS{
+            overflow: hidden;
+        }
+
+        .fa-arrow-left{
+            visibility: hidden;  
+        }
+
+        .side-img-container{
+            display: flex;
+            width: 500%;
+            position: relative;
+            animation: 15s slider infinite;
+        }
+        .sidenav #sideimage{
+            width: 250px;
+            height: 250px;
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            
+        }
+
+        @keyframes slider{
+            0% {
+                        left: 0;
+            }
+            20%{
+                left: 0;
+            }
+            25% {
+                left: -100%;
+            }
+            45% {
+                left: -100%;
+            }
+            50%{
+                left: -200%;
+            }
+            70%{
+                left: -200%;
+            }
+            75%{
+                left: -300%;
+            }
+            95%{
+                left: -300%;
+            }
+            100%{
+                left: -400%;
+            }   
+        }
+
+        .content p{
+            color: white;
+            font-size: 18px;
+            line-height:20px;
+            
+        }
+
+        .content small{
+            font-style: italic;
+            color: white;
+            line-height:20px;
+            margin-top: 50px;   
+        }
+
+        #myParties{
+            display: none;
+        }
+
+        #container{
+            margin-left: 330px;
+            background:#fff;
+            margin-right: 30px;
+        }
+
+        .header{
+            margin-bottom: 10px;
+            margin-top: 5px;
+        }
+    
+        .header h1{
+            color: #f5b7b1;
+            font-size: 40px;
+            margin-left: 30%;  
+        }
+
+        #menu-btn{
+            display: none;
+        }
+
+        #add-flier{
+            display: none;
+            align-items: center;
+            right: 0;
+            margin-right: 3%;
+            bottom: 100px;
+            position: fixed;
+            transition: 0.3s;
+        }
+
+        #add-flier:hover{
+            transform: translateY(-10px);
+        }
+
+        #add-flier p{
+            color: #f5b7b1;
+            font-style: italic;
+        }
+
+        #add-flier img{
+            width: 70px;
+            margin: 10px;
+        }
+
+        .row{
+            width: 90%;
+            margin: auto;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            display: flex;
+        }
+
+        .left-col{
+            width: 50%;
+        }
+
+        .right-col{
+            width: 50%;
+        }
+
+        .flier-box{
+            background: white;
+            transition: 0.5s;
+            margin: 10px;
+            height: 430px;
+            border-radius: 8px;
+            box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.5),
+                        15px 15px 15px rgba(0, 0, 0, 0.1), 
+                        inset -5px -5px 5px  rgba(255, 255, 255, 0.5),
+                        inset 5px 5px 5px  rgba(0, 0, 0, 0.1) ;
+        }
+
+        .flier-box:hover{
+            transform: translateY(-5px);
+        }
+
+        .slide{
+            
+            padding: 5px;
+        }
+
+        .slide img{
+            width: 100%;
+            height: 97%;
+        }
+
+        .rating i{
+            color: #f5b7b1;
+        }
+
+
+        /* pup up creat party */
+
+        #pupModal{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+
+        .modal-content{
+            width: 500px;
+            height: 520px;
+            background-color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 4px;
+            position: relative;
+            
+        }
+
+        #pupModal #poster{
+            border: none;
+            margin: 0 auto;
+            padding-bottom: 10px;
+            
+        }
+
+        #pupModal input{
+            width: 70%;
+            display: block;
+            margin: 10px auto;
+            height: 40px;
+            padding: 15px;
+            border: 1px solid #f5b7b1;
+            outline: none;
+            border-radius: 10px;
+            font-size: 15px;
+            color: #f5b7b1;
+        }
+
+        #pupModal #flier_img{
+            border: none;
+            margin-bottom: 10px;
+            height: 150px;
+            width: 150px;
+        }
+
+        #pupModal #creatPartyBtn{
+            padding: 12px 20px;
+            width: 150px;
+            background:#f5b7b1;
+            color: white;
+            font-size: 20px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 50px;
+        }
+
+
+        #close{
+            top: 0;
+            position: absolute;
+            right: 14px;
+            font-size: 42px;
+            transform: rotate(45deg);
+            cursor: pointer;
+            font-weight: bold;
+        } 
+
+        /* all account details */ 
+
+        #Account-details{
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            position: fixed;
+            top: 0;
+            justify-content: center;
+            align-items: center; 
+            display: none;
+        }
+
+        #detail-content{  
+        background: white;
+        border-radius: 8px;
+        height: 70%;
+        width: 60%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%); 
+        
+        }
+
+        #my_party{
+            width: 100%;
+            margin: 10px;
+        }
+
+        #my_party .row{
+            width: 90%;
+            height: 78%;
+            margin: auto;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            display: flex;
+        }
+
+    
+        #my_party .row .flier-box{
+            height: 100%; 
+        }
+
+        #my_party .left-col{
+            width: 50%;
+        }
+
+        #my_party .right-col{
+            width: 50%;
+        }
+
+        #my_party button{
+            padding: 15px 15px;
+            background:#f5b7b1;
+            color:#fff;
+            margin-top: 35px;    
+            
+        }
+
+        #my_party button:hover{ 
+            background:rgba(0, 0, 0, 0.1);
+            border-color: 3px solid #f5b7b1;
+            border-radius: 40px;
+        }
+
+        #my_party #formart-btn{
+            text-align:center;
+        }
+
+}
+

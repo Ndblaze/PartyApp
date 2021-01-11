@@ -1,0 +1,114 @@
+<html>
+<head>
+    <title>Abuja PArty</title>
+    <link rel="icon" href="favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="connect.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+</head>
+   <body>
+        <div class="sidenav">
+            <div class="content">
+                <div class="top">
+                <img src="img/logo.png" id="logo" > 
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div>
+                <p>Looking to have a good time in the Capital?, Dont worry We got you !!</p>
+                <div class="sideimageS">
+                    <div class="side-img-container">
+                        <img src="img/pic1.jpg" id="sideimage">
+                        <img src="img/pic2.jpg" id="sideimage">
+                        <img src="img/pic3.jpg" id="sideimage">
+                        <img src="img/pic4.jpg" id="sideimage">
+                        <img src="img/pic5.jpg" id="sideimage">
+                    </div>
+                </div>
+                <button class="common-btn" id="myParties">My party...</button><br>
+                <a href="main.html"><button  class="common-btn" id="home-btn"><i class="fa fa-home" aria-hidden="true"></i> Home</button></a><br>
+                <small>Disclaimer!! : This is just a platform to advertise and hype parties, we are not
+                     responsible for every information about from the one's you see here.
+                     Be sure to contact organiser/advertiser for more information. Thank you.</small>
+            </div>
+        </div>
+
+<!--  ///////////////////////////////////////////////////////////////////////////////////////-->
+    <div id="container">
+            <div class="header">
+                <i class="fa fa-bars"  id="menu-btn"aria-hidden="true"></i>
+                <h1>Featured Parties <i class="fa fa-sort-desc" aria-hidden="true"></i></h1>
+            </div>
+            
+            <div id="party-container">
+
+            </div>
+
+                <!-- add new flier botton -->
+                <div id="add-flier" >
+                    <p>Add New party</p>
+                    <img  src="img/add.png" id="add-btn">
+                </div>
+            </div>
+
+
+
+<!-- ////////////       this is ur pup of creation of party div     //////////////////-->
+      
+
+       <div id="pupModal">
+           <div class="modal-content">
+                <div id="close" onclick="addNewParty_colse()">
+                    +
+                </div>
+
+                <img  src="" id="flier_img" alt=""><br>
+                <label id="progress"></label>
+                <input type="file" id="poster">
+                
+            
+                <input type="text" placeholder="title of party" id="title" required>
+                <input type="text" placeholder="Alitte discription" id="discription" required>
+                <input type="text" placeholder="location of party" id="location" required>
+                <input type="number" placeholder="phone_no" id="phone_number" required>
+                <input type="text" placeholder="gate fee" id="gateFee" required>  
+                <button  type="submit" id="creatPartyBtn">Create</button>
+            </div>
+       </div>
+
+       
+
+<!-- ////////////       this is ur pup of checking my available parties and to create new one div     //////////////////-->
+       <div id="Account-details">
+            <div id="detail-content">
+                <div id="close" onclick="addNewParty_colse()">
+                +
+                </div>
+
+                <div id="my_party">
+                    <div id="my_party-container">
+                        
+                    </div>    
+                    <div id="formart-btn">
+                         <button><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edith Party</button>
+                         <button id="delect_party" ><i class="fa fa-trash" aria-hidden="true"></i> Delete Party</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+       
+      <script src="js/index.js"></script>
+      <script src="js/connect.js"></script>
+      <script src="js/party_1.js"></script>
+      
+      
+   </body>
+    
+</html>

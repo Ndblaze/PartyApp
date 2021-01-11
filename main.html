@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+  <title>Abuja House Party</title>
+  <link rel="icon" href="favicon.png">
+  
+       <!-- The core Firebase JS SDK is  always required and must be listed first -->
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-auth.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-firestor.js"></script>
+   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-storage.js"></script>
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+
+  <section class="title"> 
+   <div class="container-fluid"> 
+
+        <nav class="navbar navbar-expand-lg navbar-dark ">
+            <img src="img/logo.png" class="logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                        <a class="nav-link" href="#"> <button class="nav-btn"> HOME</button></a>
+                </li>
+                <li class="nav-item">
+                       <a class="nav-link" href="connect.html"> <button class="nav-btn"> CONNECT &#x2605; </button></a>
+                </li>
+                <li class="nav-item">
+                       <a class="nav-link" href="#"> <button class="nav-btn" id="logout"> Log out </button></a>
+                </li>
+                 <li class="nav-item">
+                      <a class="nav-link" href="footer"> <button class="nav-btn">ABOUT? </button></a>
+                 </li>
+              </ul>
+            </div>
+        </nav>
+        
+        <div class="row content">
+            <div class="col-lg-6 col-md-6">
+                <div class="left-col-items">
+                   <h1 class="header">Abuja <br> House <br> Party<i class="fa fa-paper-plane-o" aria-hidden="true"></i></h1>
+                   <span class="line-1"></span><br><br>
+                   <h3>Yay!!......</h3>
+                   <small><i>find the leatest party in your Abuja as well  as hipe your <br>
+                        party to gain more audience, this service is totally free,<br>
+                         lets go!!!!... </i></small><br>
+                         <div id="btn-inline">
+                              <a href="#"><button class="common-btn" id="signup"><i>SIGN UP </i></button></a><br><br>
+                              <a href="connect.html"><button class="common-btn"><i>Find parties  <i class="fa fa-paper-plane-o" aria-hidden="true"></i></i></button></a><br><br>
+                         </div>
+                   <span class="line-2"></span><br> 
+                   <span class="line-3"></span>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="right-col-items">
+                   <p> click here to listen</p>
+                   <img src="img/play.png" id="icon">
+                </div> 
+            </div>
+        </div>
+      </div> 
+  <hr>
+      <section class="foter" id="foter">
+        <div class="foter-links">
+          <a href=""><i class="fa fa-instagram  foter-url"  aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-facebook  foter-url" aria-hidden="true"></i></a>
+          <a href=""><i class="fa fa-linkedin  foter-url" aria-hidden="true"></i></a>
+        </div>
+        <div class="last">
+          <p><i class="fa fa-product-hunt" aria-hidden="true"></i>  2021 production Blaze</p>
+        </div>
+ </section>
+  </section>  
+
+  <audio id="mysong">
+    <source src="img/Mohbad-Ponmo-Sweet-ft.-Naira-Marley-Lil-Kesh.mp3" type="audio/mp3">
+</audio>
+
+
+
+<script src="js/index.js"></script>
+<script src="js/main.js"></script>
+<script>
+
+</script>
+</body>
+</html>
