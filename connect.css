@@ -24,7 +24,7 @@
     .fa-arrow-left{
          margin-top: 50px;
          color: white;
-         margin-left: 40px;
+         margin-left: 25px;
         
     }
 
@@ -102,7 +102,7 @@
         display: none;
     }
     .common-btn{
-        padding: 6px 10px;
+        padding: 7px 11px;
         background:transparent;
         color: #fff;
         outline: none;
@@ -198,14 +198,14 @@
 
     .right-col{
         width: 100%;
-        
+        padding-left: 3%;  
     }
 
     .flier-box{
         background: white;
         transition: 0.5s;
         margin: 10px;
-        height: 350px;
+        height: 330px;
         border-radius: 8px;
         box-shadow: -15px -15px 15px rgba(255, 255, 255, 0.5),
                     15px 15px 15px rgba(0, 0, 0, 0.1), 
@@ -416,7 +416,7 @@
 
         .sideimageS{
             overflow: hidden; 
-             width: 250px;
+             width: 270px;
         }
 
         .fa-arrow-left{
@@ -546,6 +546,7 @@
 
         .right-col{
             width: 50%;
+            padding-left:0;  
         }
 
         .flier-box{
