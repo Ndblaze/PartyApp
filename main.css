@@ -106,7 +106,9 @@ small{
 
 .left-col-items{
     background-image: url(img/undraw_compose_music_ovo2.svg);
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .right-col-items{
