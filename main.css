@@ -1,11 +1,10 @@
 
 
 .title{
-    background-image: url(img/background.jpg);
-    background-size: cover;
-    background-position: center;
-    padding: 0% 3% 0% 2%;
-    
+    /*background-image: url(img/background.jpg)*/
+    background-image: linear-gradient( #F07B8C,#ff4c68);
+    background-size: cover; 
+    padding: 0 2% 0 3%; 
 }
 
 .logo{
@@ -33,7 +32,6 @@
     border-radius: 40px;  
 }
 
-
 h1{
     font-size: 3.7rem;
     color: #fff;
@@ -58,7 +56,7 @@ small{
 .common-btn{
     padding: 9px 12px;
     background: #fff;
-    color: #f5b7b1;
+    color: #ff4c68;
     outline: none;
     border: none;
     cursor: pointer;
@@ -104,6 +102,11 @@ small{
     height: 2px;
     background: #fff;
     display: inline-block;
+}
+
+.left-col-items{
+    background-image: url(img/undraw_compose_music_ovo2.svg);
+    background-size: cover;
 }
 
 .right-col-items{
@@ -213,28 +216,10 @@ small{
 
 .common-btn{
     padding: 10px 13px;
-    background: #fff;
-    color: #f5b7b1;
-    outline: none;
-    border: none;
-    cursor: pointer;
     font-weight: bold;
     border-radius: 40px;
     margin: 10px;
 }
-
-
-.common-btn:hover{
-    color: #fff;
-    background:transparent ;
-    outline: none;
-    border: 2px solid #fff;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 40px;
-    height: 50px;
-}
-
 #btn-inline{
     display: flex;
 }
@@ -260,6 +245,17 @@ small{
     height: 2px;
     background: #fff;
     display: inline-block;
+}
+
+.left-col-items{
+    background-image: none;
+    
+}
+
+.background{
+    background-image: url(img/undraw_compose_music_ovo2.svg);
+    background-size: cover;
+    background-position: center;
 }
 
 .right-col-items{
@@ -297,7 +293,7 @@ hr{
 
 .foter-url{
     flex-wrap: wrap;
-    padding: 10px 30px;
+    padding: 10px 20px;
     color:white;
     font-size: 40px;
     font-weight: bold;

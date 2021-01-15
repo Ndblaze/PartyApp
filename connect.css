@@ -7,7 +7,7 @@
     width: 230px;
     height: 100vh;
     top: 0;
-    background:#f5b7b1;
+    background-image: linear-gradient( #F07B8C,#ff4c68);
     position: fixed;
     left: -230px;
     z-index: 2;    
@@ -139,7 +139,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
         display: flex;
-        border-bottom: 2px solid #f5b7b1;
+        border-bottom: 2px solid #ff4c68;
         border-radius: 10px;
         padding-bottom: 10px ;
         width: 90%;
@@ -147,7 +147,7 @@
     }
 
     .header h1{
-        color: #f5b7b1;
+        color: #ff4c68;
         font-size: 20px;
         margin-left: 10%;
         
@@ -157,7 +157,7 @@
         width: 40px;
         margin-left: 10%;
         cursor: pointer;
-        color: #f5b7b1;
+        color: #ff4c68;
         font-size: 30px;
     }
 
@@ -176,7 +176,7 @@
     }
 
     #add-flier p{
-        color: #f5b7b1;
+        color: #ff4c68;
         font-style: italic;
     }
 
@@ -234,7 +234,7 @@
     }
 
     .rating i{
-        color: #f5b7b1;
+        color:#ff4c68;
     }
 
 
@@ -278,7 +278,7 @@
         outline: none;
         border-radius: 10px;
         font-size: 12px;
-        color: #f5b7b1;
+        color:#ff4c68;
     }
 
     #pupModal #flier_img{
@@ -291,7 +291,7 @@
     #pupModal #creatPartyBtn{
         padding: 12px 20px;
         width: 150px;
-        background:#f5b7b1;
+        background:#ff4c68;
         color: white;
         font-size: 20px;
         outline: none;
@@ -361,7 +361,7 @@
 
     #my_party button{
         padding: 6px 10px;
-        background:#f5b7b1;
+        background:#ff4c68;
         color: #fff;
         outline: none;
         border: 1px solid #fff;
@@ -393,7 +393,6 @@
         height: 100vh;
         width: 250px;
         top: 0;
-        background:#f5b7b1;
         position: fixed;  
     }
 }
@@ -406,8 +405,6 @@
         .sidenav{
             height: 100vh;
             width: 300px;
-            top: 0;
-            background:#f5b7b1;
             position: fixed; 
             left: 0; 
         }
@@ -505,7 +502,7 @@
         }
     
         .header h1{
-            color: #f5b7b1;
+            color: #ff4c68;
             font-size: 40px;
             margin-left: 30%;  
         }
@@ -529,7 +526,7 @@
         }
 
         #add-flier p{
-            color: #f5b7b1;
+            color: #ff4c68;
             font-style: italic;
         }
 
@@ -587,7 +584,7 @@
         }
 
         .rating i{
-            color: #f5b7b1;
+            color: #ff4c68;
         }
 
 
@@ -632,7 +629,7 @@
             outline: none;
             border-radius: 10px;
             font-size: 15px;
-            color: #f5b7b1;
+            color: #ff4c68;
         }
 
         #pupModal #flier_img{
@@ -645,7 +642,7 @@
         #pupModal #creatPartyBtn{
             padding: 12px 20px;
             width: 150px;
-            background:#f5b7b1;
+            background:#ff4c68;
             color: white;
             font-size: 20px;
             outline: none;
@@ -721,7 +718,7 @@
 
         #my_party button{
             padding: 15px 15px;
-            background:#f5b7b1;
+            background:#ff4c68;
             color:#fff;
             margin-top: 35px;    
             
@@ -729,7 +726,7 @@
 
         #my_party button:hover{ 
             background:rgba(0, 0, 0, 0.1);
-            border-color: 3px solid #f5b7b1;
+            border-color: 3px solid #ff4c68;
             border-radius: 40px;
         }
 
