@@ -20,7 +20,15 @@ firebase.auth().onAuthStateChanged(function(user)
     }
 });
 
-
+var menuBtn = document.getElementById("menu-btn");
+var sidenav = document.querySelector(".sidenav");  
+var backArrow = document.querySelector(".fa-arrow-left");
+menuBtn.onclick = function(){
+        sidenav.style.left = "0";
+}
+backArrow.onclick = function(){
+    sidenav.style.left = "-230px";
+}
 
 // CREATINGG A NEW PARTY FLIER AND CLOSING  and   viewing my party and account details 
 const add_btn = document.querySelector('#add-btn');
@@ -36,6 +44,7 @@ const setupUI = (user) => {
             myPartiesBtn.addEventListener('click', (e) => {
             e.preventDefault();
                      Account_details.style.display = "block";
+                     sidenav.style.left = "-230px";
             });
             add_btn.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -109,15 +118,7 @@ function check(user) {
 
 
 
-var menuBtn = document.getElementById("menu-btn");
-var sidenav = document.querySelector(".sidenav");  
-var backArrow = document.querySelector(".fa-arrow-left");
-menuBtn.onclick = function(){
-        sidenav.style.left = "0";
-}
-backArrow.onclick = function(){
-    sidenav.style.left = "-300px";
-}
+
                     
                 
             

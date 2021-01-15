@@ -95,11 +95,11 @@ const setupParty = (data) => {
                </div>
                <div class="right-col">
                    <div class="slide">
-                       <h1>Tiltle: ${party.title}</h1>
-                       <p>Discription: ${party.discription}</p>
-                       <small>Contact no: ${party.phone_number}</small><br>
-                       <small>Location :  ${party.location}</small><br>
-                       <small>Gate Fee: ${party.gateFee}</small>
+                       <h1><b> Tiltle</b>: <span> ${party.title} <span></h1>
+                       <p><b> Discription</b>: ${party.discription}</p>
+                       <small><b>Contact no</b>: ${party.phone_number}</small><br>
+                       <small><b> Location</b>:  ${party.location}</small><br>
+                       <small><b> Gate Fee</b>: ${party.gateFee}</small>
                        <br>
                        <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -139,11 +139,11 @@ const accountDetailsSetup = (doc) => {
                </div>
                <div class="right-col">
                    <div class="slide">
-                       <h1>Tiltle: ${myparty.title}</h1>
-                       <p>Discription: ${myparty.discription}</p>
-                       <small>Contact no: ${myparty.phone_number}</small><br>
-                       <small>Location :  ${myparty.location}</small><br>
-                       <small>Gate Fee: ${myparty.gateFee}</small>
+                       <h1><b>Tiltle</b>: ${myparty.title}</h1>
+                       <p><b>Discription</b>: ${myparty.discription}</p>
+                       <small><b>Contact no</b>: ${myparty.phone_number}</small><br>
+                       <small><b>Location</b>:  ${myparty.location}</small><br>
+                       <small><b>Gate Fee</b>: ${myparty.gateFee}</small>
                        <br><br>
                        <div class="rating">
                             <i class="fa fa-star" ></i>
