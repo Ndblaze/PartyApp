@@ -7,6 +7,7 @@ firebase.auth().onAuthStateChanged(function(user)
             pushData(user);
             check(user);
             delect(user);
+            Edith(user);
 
         }, err =>{
             console.log(err.message)
@@ -17,6 +18,7 @@ firebase.auth().onAuthStateChanged(function(user)
         check();
         pushData();
         delect();
+        Edith();
     }
 });
 
@@ -59,7 +61,8 @@ const setupUI = (user) => {
             });
             add_btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                pupModal.style.display = "flex";       
+                pupModal.style.display = "flex";
+                       
             });  
 
          }else{

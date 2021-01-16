@@ -272,6 +272,72 @@ const accountDetailsSetup = (doc) => {
 }
 
 
+/* ----------------- updating and edithing to the dom  -------------------------*/
+const Edith_party = document.querySelector('#Edith_party');
+
+Edith_party.addEventListener("click", (e) => {
+    e.preventDefault();
+        
+    Account_details.style.display = "none";
+    pupModal.style.display = "flex";
+        
+    const creatPartyBtn = document.querySelector('#creatPartyBtn');
+    creatPartyBtn.id = "edith";
+
+});    
+
+const Edith = (user) => {
+
+    const EdithPartyBtn = document.querySelector('#edith');
+    EdithPartyBtn.addEventListener("submit", (e) => {
+        e.preventDefault();
+           checkInput();
+
+            if(checkInput() == true ){
+                var title_update = title_p.value;
+                var discription_update = discription_p.value;
+                var location_update = location_p.value;
+                var phone_number_update = phone_number_p.value;
+                var gateFee_update = gateFee_p.value;
+
+     // still need to find a way to delet the old pic or poster before te user upload new one so not to fload data base
+
+                const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
+                task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
+                posterURL = url;
+
+                database.collection('allParty').doc(user.uid).update({
+                    title: title_update,
+                    discription: discription_update,
+                    location: location_update,
+                    phone_number: phone_number_update,
+                    gateFee: gateFee_update,
+                    link: posterURL
+                
+                });    
+            
+                document.getElementById("title").value = '';
+                document.getElementById("discription").value = '';
+                document.getElementById("location").value = '';
+                document.getElementById("phone_number").value = '';
+                document.getElementById("gateFee").value = '';
+                document.getElementById("flier_img").src = '';
+                document.getElementById("poster").value = '';
+
+                    console.log(posterURL);
+                
+                    }).catch(error => {
+                        alert(error.message);
+                    });
+
+                    addNewParty_colse();
+         
+            } 
+
+     });
+}
+
+
 /* --------------------delecting A party -----------------------------*/
 
 const delect_party = document.querySelector('#delect_party');
@@ -279,7 +345,10 @@ const delect_party = document.querySelector('#delect_party');
 const delect = (user) => {
     delect_party.addEventListener("click", (e) => {
         e.preventDefault();
-          
+                
+        const EdithPartyBtn = document.querySelector('#edith');
+        EdithPartyBtn.id = "creatPartyBtn";
+                 
                 database.collection("allParty").doc(user.uid).delete().then(function() {
                     console.log("Party successfully deleted!");
                     addNewParty_colse();
@@ -292,6 +361,7 @@ const delect = (user) => {
                 storageDelect(user);
     })
 } 
+
 
 function storageDelect(user) {
             // Create a reference to the file to delete
