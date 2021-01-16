@@ -272,19 +272,16 @@ const accountDetailsSetup = (doc) => {
 }
 
 
-/* ----------------- updating and edithing to the dom  -------------------------*/
+/* ----------------- updating and edithing to the dom  -------------------------*/   
+
 const Edith_party = document.querySelector('#Edith_party');
 
 Edith_party.addEventListener("click", (e) => {
-    e.preventDefault();
-        
-    Account_details.style.display = "none";
-    pupModal.style.display = "flex";
-        
-    const creatPartyBtn = document.querySelector('#creatPartyBtn');
-    creatPartyBtn.id = "edith";
-
-});    
+e.preventDefault();
+    
+Account_details.style.display = "none";
+pupModal.style.display = "flex";
+});   
 
 const Edith = (user) => {
 
@@ -345,9 +342,6 @@ const delect_party = document.querySelector('#delect_party');
 const delect = (user) => {
     delect_party.addEventListener("click", (e) => {
         e.preventDefault();
-                
-        const EdithPartyBtn = document.querySelector('#edith');
-        EdithPartyBtn.id = "creatPartyBtn";
                  
                 database.collection("allParty").doc(user.uid).delete().then(function() {
                     console.log("Party successfully deleted!");

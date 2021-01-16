@@ -62,7 +62,7 @@ const setupUI = (user) => {
             add_btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 pupModal.style.display = "flex";
-                       
+
             });  
 
          }else{
@@ -111,11 +111,12 @@ function check(user) {
                 add_flier.style.display = 'none';
                 myPartiesBtn.style.display = 'block';
                 accountDetailsSetup(doc);
+                id_To_edith();
                 
             }else{
                 myPartiesBtn.style.display ='none';
                 add_flier.style.display = 'flex';
-                
+                id_To_creatPartyBtn();
             }
         });
         
@@ -123,11 +124,19 @@ function check(user) {
 
     }
 
- 
 }
 
+function id_To_edith (){   
+    const creatPartyBtn = document.querySelector('#creatPartyBtn');
+    creatPartyBtn.id = "edith";
 
+}
 
+function id_To_creatPartyBtn (){   
+    const creatPartyBtn = document.querySelector('#edith');
+    creatPartyBtn.id = "creatPartyBtn";
+
+}
 
                     
                 
