@@ -70,13 +70,41 @@
                 <label id="progress"></label>
                 <input type="file" id="poster">
                 
-            
-                <input type="text" placeholder="title of party" id="title" required>
-                <input type="text" placeholder="Alitte discription" id="discription" required>
-                <input type="text" placeholder="location of party" id="location" required>
-                <input type="number" placeholder="phone_no" id="phone_number" required>
-                <input type="text" placeholder="gate fee" id="gateFee" required>  
+            <form id="party_form">
+
+                <div class="form-control">
+                    <input type="text" placeholder="title of party" id="title" maxlength="30"> 
+                                    <i class="fa fa-check-circle"></i>
+                                    <i class="fa fa-exclamation-circle"></i>
+                                    <small>Error</small>
+
+                </div> 
+                <div class="form-control ">                
+                        <input type="text" placeholder="Alitte discription" id="discription" maxlength="70">
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        <small>Error</small>
+                             </div>
+                <div class="form-control">                
+                        <input type="text" placeholder="location of party" id="location" maxlength="30">
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        <small>Error</small>
+                            </div>
+                 <div class="form-control">                
+                        <input type="number" placeholder="phone_no" id="phone_number">
+                                        <i class="fa fa-check-circle"></i>
+                                        <i class="fa fa-exclamation-circle"></i>
+                                        <small>Error</small>
+                            </div>
+                <div class="form-control">    
+                    <input type="text" placeholder="gate fee" id="gateFee" maxlength="30"> 
+                                    <i class="fa fa-check-circle"></i>
+                                    <i class="fa fa-exclamation-circle"></i>
+                                    <small>Error</small>
+                </div> 
                 <button  type="submit" id="creatPartyBtn">Create</button>
+            </form>   
             </div>
        </div>
 

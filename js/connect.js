@@ -23,12 +23,21 @@ firebase.auth().onAuthStateChanged(function(user)
 var menuBtn = document.getElementById("menu-btn");
 var sidenav = document.querySelector(".sidenav");  
 var backArrow = document.querySelector(".fa-arrow-left");
-menuBtn.onclick = function(){
+    
+menuBtn.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    if(window.matchMedia("(max-width: 767px)").matches){
         sidenav.style.left = "0";
-}
-backArrow.onclick = function(){
-    sidenav.style.left = "-230px";
-}
+    }
+});
+
+backArrow.addEventListener('click', (e) => {
+    e.preventDefault(); 
+    if(window.matchMedia("(max-width: 767px)").matches){
+        sidenav.style.left = "-230px";
+    }
+});
+
 
 // CREATINGG A NEW PARTY FLIER AND CLOSING  and   viewing my party and account details 
 const add_btn = document.querySelector('#add-btn');
@@ -44,14 +53,14 @@ const setupUI = (user) => {
             myPartiesBtn.addEventListener('click', (e) => {
             e.preventDefault();
                      Account_details.style.display = "block";
-                     sidenav.style.left = "-230px";
+                     if(window.matchMedia("(max-width: 767px)").matches){
+                        sidenav.style.left = "-230px";
+                    }
             });
             add_btn.addEventListener('click', (e) => {
                 e.preventDefault();
                 pupModal.style.display = "flex";       
-            });
-         
-              
+            });  
 
          }else{
             myPartiesBtn.addEventListener('click', (e) => {
@@ -74,23 +83,21 @@ function addNewParty_colse(){
     Account_details.style.display = "none"; 
     var pupModal = document.getElementById("pupModal");
     pupModal.style.display = "none";
+    var party_form = document.getElementById("party_form");
+    party_form.reset();
+   
     
-    clearAll();
+   // changing back there css original state after successsfull submit of form-------
+    title_p.parentElement.className = 'form-control';
+    discription_p.parentElement.className = 'form-control';
+    location_p.parentElement.className = 'form-control';
+    phone_number_p.parentElement.className = 'form-control'
+    gateFee_p.parentElement.className = 'form-control';
 }
 
-function clearAll() {
-    document.getElementById("title").value = '';
-    document.getElementById("discription").value = '';
-    document.getElementById("location").value = '';
-    document.getElementById("phone_number").value = '';
-    document.getElementById("gateFee").value = '';
-    document.getElementById("flier_img").src = '';
-    document.getElementById("poster").value = '';   
-    
-}
+
 
 const add_flier = document.querySelector('#add-flier');
-
 
 function check(user) {
     

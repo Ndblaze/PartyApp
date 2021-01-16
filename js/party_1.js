@@ -1,5 +1,9 @@
 
-
+var title_p = document.getElementById("title");
+var discription_p = document.getElementById("discription");
+var location_p = document.getElementById("location");
+var phone_number_p = document.getElementById("phone_number");
+var gateFee_p = document.getElementById("gateFee");
 // selecting a file you choos to upload ......
 
  const selecttBtn = document.getElementById("poster");
@@ -25,55 +29,163 @@
                     }
             });
 
-                       
 
 const pushData = (user) => {
     
-    const creatPartyBtn = document.querySelector('#creatPartyBtn');
-    
-    creatPartyBtn.addEventListener("click", (e) => {
+    const creatPartyBtn = document.querySelector('#party_form');
+    creatPartyBtn.addEventListener("submit", (e) => {
         e.preventDefault();
-        var title_p = document.getElementById("title").value;
-        var discription_p = document.getElementById("discription").value;
-        var location_p = document.getElementById("location").value;
-        var phone_number_p = document.getElementById("phone_number").value;
-        var gateFee_p = document.getElementById("gateFee").value;
 
-        const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
-        task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-        posterURL = url;
+        checkInput();
 
-        database.collection('allParty').doc(user.uid).set({
-            title: title_p,
-            discription: discription_p,
-            location: location_p,
-            phone_number: phone_number_p,
-            gateFee: gateFee_p,
-            link: posterURL
-           
-        });    
-        
-        document.getElementById("title").value = '';
-        document.getElementById("discription").value = '';
-        document.getElementById("location").value = '';
-        document.getElementById("phone_number").value = '';
-        document.getElementById("gateFee").value = '';
-        document.getElementById("flier_img").src = '';
-        document.getElementById("poster").value = '';
+            if(checkInput() == true ){
+                var title_p = document.getElementById("title").value;
+                var discription_p = document.getElementById("discription").value;
+                var location_p = document.getElementById("location").value;
+                var phone_number_p = document.getElementById("phone_number").value;
+                var gateFee_p = document.getElementById("gateFee").value;
 
-        console.log(posterURL);
-       
-        }).catch(error => {
-            alert(error.message);
-        });
+                const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
+                task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
+                posterURL = url;
 
-        addNewParty_colse();
+                database.collection('allParty').doc(user.uid).set({
+                    title: title_p,
+                    discription: discription_p,
+                    location: location_p,
+                    phone_number: phone_number_p,
+                    gateFee: gateFee_p,
+                    link: posterURL
+                
+                });    
+            
+                document.getElementById("title").value = '';
+                document.getElementById("discription").value = '';
+                document.getElementById("location").value = '';
+                document.getElementById("phone_number").value = '';
+                document.getElementById("gateFee").value = '';
+                document.getElementById("flier_img").src = '';
+                document.getElementById("poster").value = '';
+
+                    console.log(posterURL);
+                
+                    }).catch(error => {
+                        alert(error.message);
+                    });
+
+                    addNewParty_colse();
+            }else{
+
+                alert('make sure to enter all required fields');
+            }
+         
     });
+}
+        
+    
+
+
+
+function checkInput() {
+    const title_value = title_p.value.trim();
+    const discription_value = discription_p.value.trim();
+    const location_value = location_p.value.trim();
+    const phone_number_value = phone_number_p.value.trim();
+    const gateFee_value = gateFee_p.value.trim();
+
+    if(title_value == '') {
+        //show error
+        //add error class
+        setError(title_p, "Title of party is required");
+        return false;
+    }else{
+
+        setSuccess(title_p);
+    }
+
+    if(discription_value == ''){
+        //show error
+        //add error class
+        setError(discription_p, "Discription of party is required");
+        return false;
+    }else{
+        
+        setSuccess(discription_p);
+        
+    }
+
+    if(location_value == ''){
+        //show error
+        //add error class
+        setError(location_p, "Location of party is required");
+        return false;
+    }else{
+        
+        setSuccess(location_p);
+
+    }
+
+    if(phone_number_value == ''){
+        //show error
+        //add error class
+        setError(phone_number_p, "Phone number is required");
+        return false;
+    }else{
+        if(mobileValidation(phone_number_value) == true){
+
+            setSuccess(phone_number_p);
+
+        }else{
+
+            setError(phone_number_p, "Phone number not correct");
+            return false;
+        } 
+        
+    }
+
+    if(gateFee_value == ''){
+        //show error
+        //add error class
+        setError(gateFee_p, "Gate fee is required");
+        return false;
+    }else{
+        
+        setSuccess(gateFee_p);
+        
+    }
+
+    return true;
+
+}
+
+function mobileValidation(value){
+    
+    var regx = /^[0][7-9][0]\d{8}$/;
+
+    if (regx.test(value)) {
+         return true;   
+    }else{
+        return false;
+    }
+}
+
+function setError(input , message){
+      const formControl = input.parentElement;
+      const small = formControl.querySelector('small');
+
+      small.innerText= message;
+
+      //add error class
+      formControl.className = 'form-control error';
+}
+
+function setSuccess(input){
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
 }
 
 
-
-// sending to the dom
+// ----------------- sending to the dom  -------------------------
 
 const partyContainer = document.querySelector('#party-container');
 
@@ -144,7 +256,7 @@ const accountDetailsSetup = (doc) => {
                        <small><b>Contact no</b>: ${myparty.phone_number}</small><br>
                        <small><b>Location</b>:  ${myparty.location}</small><br>
                        <small><b>Gate Fee</b>: ${myparty.gateFee}</small>
-                       <br><br>
+                       
                        <div class="rating">
                             <i class="fa fa-star" ></i>
                             <i class="fa fa-star" ></i>
