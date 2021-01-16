@@ -25,14 +25,14 @@
     .fa-arrow-left{
          margin-top: 50px;
          color: white;
-         margin-left: 25px;
+         margin-left: 20px;
         
     }
 
     .content #logo{
-        width: 150px;
+        width: 170px;
         height: 150px;
-        margin-left: 2%;
+        margin-left: 1%;
     }
 
     .sideimageS{
@@ -385,7 +385,7 @@
     height: 75%;
     width: 85%;
     position: relative;
-    top: 45%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%); 
     
@@ -393,7 +393,7 @@
 
     #my_party{
         width: 100%;
-        margin: 40px auto;
+        margin: 25px auto;
     }
 
     #my_party .row{
@@ -423,7 +423,7 @@
         cursor: pointer;
         font-weight: bold;
         border-radius: 40px;
-        margin-top: 10px;
+        margin-top: 5px;
         margin-left: 5px;
         font-size: 17px;
         
@@ -682,7 +682,7 @@
         width: 60%;
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 60%;
         transform: translate(-50%,-50%); 
         
         }
