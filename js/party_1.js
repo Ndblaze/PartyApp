@@ -74,9 +74,6 @@ const pushData = (user) => {
                     });
 
                     addNewParty_colse();
-            }else{
-
-                alert('make sure to enter all required fields');
             }
          
     });
