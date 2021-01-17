@@ -28,7 +28,6 @@ function like_minus(decrement, id){
 const likes = (user) => {
     console.log(user.uid)
     const heart = document.getElementById(user.uid);
-    heart.className = "fa fa-heart";
     heart.addEventListener('click', (e) => {
         e.preventDefault();
        var i = 0;

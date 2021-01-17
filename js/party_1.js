@@ -219,7 +219,7 @@ const setupParty = (data) => {
                             <i class="fa fa-star rate-stars" ></i>
                             <i class="fa fa-star rate-stars" ></i>
                             <i class="fa fa-star-o rate-stars" ></i>
-                            <i class=""  id="${party.userId}">  <span>${party.likes}</span></i>
+                            <i class="fa fa-heart-o"  id="${party.userId}">  <span>${party.likes}</span></i>
                        </div>
                    </div>
                </div>
