@@ -1,13 +1,16 @@
+
 firebase.auth().onAuthStateChanged(function(user)
 {
     if(user){
         database.collection('allParty').onSnapshot((snapshot) => {
             setupParty(snapshot.docs);   
             setupUI(user);
+            likes(user);
             pushData(user);
             check(user);
             delect(user);
             Edith(user);
+            
 
         }, err =>{
             console.log(err.message)
@@ -137,6 +140,8 @@ function id_To_creatPartyBtn (){
     creatPartyBtn.id = "creatPartyBtn";
 
 }
+
+
 
                     
                 

@@ -55,7 +55,10 @@ const pushData = (user) => {
                     location: location_p,
                     phone_number: phone_number_p,
                     gateFee: gateFee_p,
-                    link: posterURL
+                    link: posterURL,
+                    userId: user.uid,
+                    rating: 20,
+                    likes: 0
                 
                 });    
             
@@ -210,12 +213,13 @@ const setupParty = (data) => {
                        <small><b> Location</b>:  ${party.location}</small><br>
                        <small><b> Gate Fee</b>: ${party.gateFee}</small>
                        <br>
-                       <div class="rating">
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star" ></i>
-                            <i class="fa fa-star-o" ></i>
+                       <div class="rating" >
+                            <i class="fa fa-star rate-stars" ></i>
+                            <i class="fa fa-star rate-stars" ></i>
+                            <i class="fa fa-star rate-stars" ></i>
+                            <i class="fa fa-star rate-stars" ></i>
+                            <i class="fa fa-star-o rate-stars" ></i>
+                            <i class=""  id="${party.userId}">  <span>${party.likes}</span></i>
                        </div>
                    </div>
                </div>
@@ -284,7 +288,7 @@ pupModal.style.display = "flex";
 });   
 
 const Edith = (user) => {
-
+    
     const EdithPartyBtn = document.querySelector('#edith');
     EdithPartyBtn.addEventListener("submit", (e) => {
         e.preventDefault();
@@ -309,7 +313,7 @@ const Edith = (user) => {
                     location: location_update,
                     phone_number: phone_number_update,
                     gateFee: gateFee_update,
-                    link: posterURL
+                    link: posterURL,
                 
                 });    
             

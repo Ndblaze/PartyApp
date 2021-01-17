@@ -242,10 +242,34 @@
         height: 97%;
     }
 
-    .rating i{
+    .rating img{
+        width: 20px;
+        height: 20px;
+        right: 3%;
+        cursor: pointer;
+    }
+
+    .rate-stars{
         color:#ff4c68;
     }
 
+    .fa-heart{
+       right: -55%;
+       top: -3px;
+       position: relative;
+       font-size: 50px;
+       color:#ff4c68;
+       cursor: pointer;
+    }
+
+    .fa-heart-o{
+       right: -55%;
+       top: -3px;
+       position: relative;
+       font-size: 50px;
+       color:#ff4c68;
+       cursor: pointer;
+    }
 
     /* pup up creat party */
 

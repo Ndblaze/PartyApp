@@ -1,14 +1,15 @@
 var firebaseConfig = {
-  apiKey: "AIzaSyAqbRxijbFSDnhBYGA2zPW1Epj1-wI3_3g",
-  authDomain: "abujahouseparty-dc983.firebaseapp.com",
-  projectId: "abujahouseparty-dc983",
-  storageBucket: "abujahouseparty-dc983.appspot.com",
-  messagingSenderId: "290955656117",
-  appId: "1:290955656117:web:ddd2cad95977024f36f7fc",
-  measurementId: "G-BRV2NH2Y7T"
+  apiKey: "AIzaSyA3lhFDnXQFnPfsDkS35NJKe5QQRfKgR-c",
+  authDomain: "party-app-94a17.firebaseapp.com",
+  projectId: "party-app-94a17",
+  storageBucket: "party-app-94a17.appspot.com",
+  messagingSenderId: "550793114992",
+  appId: "1:550793114992:web:446cd3f0c906a96fda4bb5",
+  measurementId: "G-HPMG1NWHS0"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 
 //make auth and firestore reffrence
 
