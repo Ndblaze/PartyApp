@@ -4,6 +4,7 @@ var discription_p = document.getElementById("discription");
 var location_p = document.getElementById("location");
 var phone_number_p = document.getElementById("phone_number");
 var gateFee_p = document.getElementById("gateFee");
+
 // selecting a file you choos to upload ......
 
  const selecttBtn = document.getElementById("poster");
@@ -13,78 +14,89 @@ var gateFee_p = document.getElementById("gateFee");
  var file;
  var posterURL;
  
-            selecttBtn.addEventListener("change", function(){
-                    file = this.files[0];
-                    file_name = file.name;
-                    console.log(file_name);
-                    if (file){
-                        const reader = new FileReader();
-                        reader.addEventListener("load", function(){
-                                image.setAttribute("src", this.result);
-                        });
-                        
-                        reader.readAsDataURL(file);
-                    }else{
-                        image.setAttribute("src", "");
-                    }
+selecttBtn.addEventListener("change", function(){
+        file = this.files[0];
+        file_name = file.name;
+        console.log(file_name);
+        if (file){
+            const reader = new FileReader();
+            reader.addEventListener("load", function(){
+                    image.setAttribute("src", this.result);
+            });
+            
+            reader.readAsDataURL(file);
+        }else{
+            image.setAttribute("src", "");
+        }
+});
+
+
+ 
+const creatPartyBtn = document.querySelector('#party_form');
+
+creatPartyBtn.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var user = auth.currentUser;
+    checkInput();
+
+        if(checkInput() == true ){
+
+            var title_p = document.getElementById("title").value;
+            var discription_p = document.getElementById("discription").value;
+            var location_p = document.getElementById("location").value;
+            var phone_number_p = document.getElementById("phone_number").value;
+            var gateFee_p = document.getElementById("gateFee").value;
+
+            const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
+            task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
+            posterURL = url;
+            
+            //calling the function to push data to our database
+            uploead_to_allParty(user, title_p, discription_p, location_p, phone_number_p, gateFee_p);
+        
+            }).catch(error => {
+
+                alert(error.message);
             });
 
-
-const pushData = (user) => {
-    
-    const creatPartyBtn = document.querySelector('#party_form');
-    creatPartyBtn.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        checkInput();
-
-            if(checkInput() == true ){
-                var title_p = document.getElementById("title").value;
-                var discription_p = document.getElementById("discription").value;
-                var location_p = document.getElementById("location").value;
-                var phone_number_p = document.getElementById("phone_number").value;
-                var gateFee_p = document.getElementById("gateFee").value;
-
-                const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
-                task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
-                posterURL = url;
-
-                database.collection('allParty').doc(user.uid).set({
-                    title: title_p,
-                    discription: discription_p,
-                    location: location_p,
-                    phone_number: phone_number_p,
-                    gateFee: gateFee_p,
-                    link: posterURL,
-                    userId: user.uid,
-                    rating: 20,
-                    likes: 0
-                
-                });    
-            
-                document.getElementById("title").value = '';
-                document.getElementById("discription").value = '';
-                document.getElementById("location").value = '';
-                document.getElementById("phone_number").value = '';
-                document.getElementById("gateFee").value = '';
-                document.getElementById("flier_img").src = '';
-                document.getElementById("poster").value = '';
-
-                    console.log(posterURL);
-                
-                    }).catch(error => {
-                        alert(error.message);
-                    });
-
-                    addNewParty_colse();
-            }
+            addNewParty_colse();
+        }
          
-    });
-}
+});
+
         
+function uploead_to_allParty(user, title_p, discription_p, location_p, phone_number_p, gateFee_p){
+
+    const allParty = database.collection('allParty').doc(user.uid);
+    allParty.set({
+        private : {
+            title: title_p,
+            discription: discription_p,
+            location: location_p,
+            phone_number: phone_number_p,
+            gateFee: gateFee_p,
+            link: posterURL,
+            userId: user.uid
+            },
+
+        public : {
+            defualt_rating: 20,
+            post_uid: user.uid,
+            likes: 0,
+            },
+         
+        listOfLikedUsers: []    
+        
+    }).then(() =>{
+      
+    }).catch(function(error) {
+        console.error("Error adding document: ", error);
+        return false;
+    });
     
+} 
 
-
+// checking and validating out inputs to see if the user is entering a vaild value
 
 function checkInput() {
     const title_value = title_p.value.trim();
@@ -158,6 +170,7 @@ function checkInput() {
 
 }
 
+// users mobile number validation
 function mobileValidation(value){
     
     var regx = /^[0][7-9][0]\d{8}$/;
@@ -169,6 +182,7 @@ function mobileValidation(value){
     }
 }
 
+// on success and Error messages
 function setError(input , message){
       const formControl = input.parentElement;
       const small = formControl.querySelector('small');
@@ -194,7 +208,7 @@ const setupParty = (data) => {
     let html= '';
     data.forEach(doc => {
         const party = doc.data();
-        var imgLink = party.link;
+        var imgLink = party.private.link;
         
         const row = `
             <div class="row">
@@ -207,19 +221,19 @@ const setupParty = (data) => {
                </div>
                <div class="right-col">
                    <div class="slide">
-                       <h1><b> Tiltle</b>: <span> ${party.title} <span></h1>
-                       <p><b> Discription</b>: ${party.discription}</p>
-                       <small><b>Contact no</b>: ${party.phone_number}</small><br>
-                       <small><b> Location</b>:  ${party.location}</small><br>
-                       <small><b> Gate Fee</b>: ${party.gateFee}</small>
+                       <h1><b> Tiltle</b>: <span> ${party.private.title} <span></h1>
+                       <p><b> Discription</b>: ${party.private.discription}</p>
+                       <small><b>Contact no</b>: ${party.private.phone_number}</small><br>
+                       <small><b> Location</b>:  ${party.private.location}</small><br>
+                       <small><b> Gate Fee</b>: ${party.private.gateFee}</small>
                        <br>
                        <div class="rating" >
-                            <i class="fa fa-star rate-stars" ></i>
-                            <i class="fa fa-star rate-stars" ></i>
-                            <i class="fa fa-star rate-stars" ></i>
-                            <i class="fa fa-star rate-stars" ></i>
-                            <i class="fa fa-star-o rate-stars" ></i>
-                            <i class="fa fa-heart-o"  id="${party.userId}">  <span>${party.likes}</span></i>
+                            <i class="fa fa-star " ></i>
+                            <i class="fa fa-star " ></i>
+                            <i class="fa fa-star " ></i>
+                            <i class="fa fa-star " ></i>
+                            <i class="fa fa-star-o " ></i>
+                            <i class="fa fa-heart-o "  id="${party.public.post_uid}" onClick="getPostId (this.id)">  <span>${party.public.likes}</span></i>
                        </div>
                    </div>
                </div>
@@ -227,19 +241,35 @@ const setupParty = (data) => {
          `;
         
          html += row 
-
+         query_for_user_likes(party.private.userId)
     }); 
-    partyContainer.innerHTML = html;  
+    partyContainer.innerHTML = html; 
+    
+    
 }
 
+function query_for_user_likes(doc){
+    var user = auth.currentUser;
+    database.collection("allParty").where("listOfLikedUsers", "array-contains", user.uid).get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id);
+            document.getElementById(doc.id).className = "fa fa-heart";
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+   
+}
 
-
+// getting a snapshort of the users personal party if there is
 const accountDetailsSetup = (doc) => {
     const my_party_container = document.querySelector('#my_party-container');
-
     let html= '';
         const myparty = doc.data();
-        var imgLink = myparty.link;
+        var imgLink = myparty.private.link;
         
         const myRow = `
             <div class="row">
@@ -252,11 +282,11 @@ const accountDetailsSetup = (doc) => {
                </div>
                <div class="right-col">
                    <div class="slide">
-                       <h1><b>Tiltle</b>: ${myparty.title}</h1>
-                       <p><b>Discription</b>: ${myparty.discription}</p>
-                       <small><b>Contact no</b>: ${myparty.phone_number}</small><br>
-                       <small><b>Location</b>:  ${myparty.location}</small><br>
-                       <small><b>Gate Fee</b>: ${myparty.gateFee}</small>
+                       <h1><b>Tiltle</b>: ${myparty.private.title}</h1>
+                       <p><b>Discription</b>: ${myparty.private.discription}</p>
+                       <small><b>Contact no</b>: ${myparty.private.phone_number}</small><br>
+                       <small><b>Location</b>:  ${myparty.private.location}</small><br>
+                       <small><b>Gate Fee</b>: ${myparty.private.gateFee}</small>
                        
                        <div class="rating">
                             <i class="fa fa-star" ></i>
@@ -276,15 +306,16 @@ const accountDetailsSetup = (doc) => {
 }
 
 
-/* ----------------- updating and edithing to the dom  -------------------------*/   
+/* ----------------- updating and edithing to the dom  ---------------------------------*/   
 
 const Edith_party = document.querySelector('#Edith_party');
 
 Edith_party.addEventListener("click", (e) => {
-e.preventDefault();
-    
-Account_details.style.display = "none";
-pupModal.style.display = "flex";
+e.preventDefault();   
+    Account_details.style.display = "none";
+    pupModal.style.display = "flex";
+    var user = auth.currentUser;
+    Edith(user);
 });   
 
 const Edith = (user) => {
@@ -300,30 +331,32 @@ const Edith = (user) => {
                 var location_update = location_p.value;
                 var phone_number_update = phone_number_p.value;
                 var gateFee_update = gateFee_p.value;
-
-     // still need to find a way to delet the old pic or poster before te user upload new one so not to fload data base
+                
+                // deleting the old pic to use a new one -------
+                  storageDelect(user);
 
                 const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
                 task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
                 posterURL = url;
 
                 database.collection('allParty').doc(user.uid).update({
-                    title: title_update,
-                    discription: discription_update,
-                    location: location_update,
-                    phone_number: phone_number_update,
-                    gateFee: gateFee_update,
-                    link: posterURL,
+                    private: {
+                        title: title_update,
+                        discription: discription_update,
+                        location: location_update,
+                        phone_number: phone_number_update,
+                        gateFee: gateFee_update,
+                        link: posterURL,
+                    },
+                    public : {
+                        defualt_rating: 20,
+                        post_uid: user.uid,
+                        likes: 0,
+                        },
+                     
+                    listOfLikedUsers: []
                 
-                });    
-            
-                document.getElementById("title").value = '';
-                document.getElementById("discription").value = '';
-                document.getElementById("location").value = '';
-                document.getElementById("phone_number").value = '';
-                document.getElementById("gateFee").value = '';
-                document.getElementById("flier_img").src = '';
-                document.getElementById("poster").value = '';
+                }); 
 
                     console.log(posterURL);
                 
@@ -339,26 +372,25 @@ const Edith = (user) => {
 }
 
 
-/* --------------------delecting A party -----------------------------*/
+/* --------------------delecting A party ------------------------------------------*/
 
 const delect_party = document.querySelector('#delect_party');
 
-const delect = (user) => {
-    delect_party.addEventListener("click", (e) => {
-        e.preventDefault();
-                 
-                database.collection("allParty").doc(user.uid).delete().then(function() {
-                    console.log("Party successfully deleted!");
-                    addNewParty_colse();
-                    alert("Party successfully deleted!");
+delect_party.addEventListener("click", (e) => {
+    e.preventDefault();
+    var user = auth.currentUser;    
+            database.collection("allParty").doc(user.uid).delete().then(function() {
+                console.log("Party successfully deleted!");
+                addNewParty_colse();
+                alert("Party successfully deleted!");
 
-                }).catch(function(error) {
-                    alert("Error removing document: ", error);
-                });
-              
-                storageDelect(user);
-    })
-} 
+            }).catch(function(error) {
+                alert("Error removing document: ", error);
+            });
+            
+            storageDelect(user);
+})
+
 
 
 function storageDelect(user) {

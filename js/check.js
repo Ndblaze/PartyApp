@@ -1,54 +1,41 @@
 
-
-
-function like_plus(incriment, id){
-    if(incriment = 1){
-
-        var counter = database.collection('allParty').doc('YNsMwRnC2beMacXH53Y9Pk4Uuwx2');
-        counter.update({
-        likes: firebase.firestore.FieldValue.increment(1)
-     
-       });
+function getPostId(postID){
+   const postRef = document.getElementById(postID);
+   var user = auth.currentUser;
+   var postRefDoc = database.collection("allParty").doc(postID);
+   postRefDoc.get().then(function (doc) {
+    if(doc.exists){
+        if(postID == doc.data().public.post_uid){
+           // console.log(postID +'=='+doc.data().public.post_uid)
+           if(check_array(doc, user.uid) == true){ 
+                postRefDoc.update({
+                    "public.likes": firebase.firestore.FieldValue.increment(-1),
+                    listOfLikedUsers: firebase.firestore.FieldValue.arrayRemove(user.uid)
+                         
+                })
+                console.log("unlike") 
+           }else{
+                postRefDoc.update({
+                    "public.likes": firebase.firestore.FieldValue.increment(1),
+                    listOfLikedUsers: firebase.firestore.FieldValue.arrayUnion(user.uid)      
+                })
+                console.log("like") 
+            }
+        }
     }
-    
+
+   })    
+
 }
 
-function like_minus(decrement, id){
-    if(decrement = -1){
 
-        var counter = database.collection('allParty').doc(id);
-        counter.update({
-        likes: firebase.firestore.FieldValue.increment(1)
-     
-        });
-    }
+function check_array(doc, userID){
+    var array = doc.data().listOfLikedUsers;
+    for(var i = 0; i< array.length; i++){
+        if(array[i] === userID){
+            var me = userID;
+            return true
+        }
+    }    
+    return false
 }
-
-
-const likes = (user) => {
-    console.log(user.uid)
-    const heart = document.getElementById(user.uid);
-    heart.addEventListener('click', (e) => {
-        e.preventDefault();
-       var i = 0;
-        if(heart.className == "fa fa-heart"){
-            var counter = database.collection('allParty').doc(user.uid);
-                counter.update({
-                likes: firebase.firestore.FieldValue.increment(1)
-     
-            }).then(() =>{
-                heart.className = "fa fa-heart ";
-            });
-        }else{
-            var counter = database.collection('allParty').doc(user.uid);
-                counter.update({
-                likes: firebase.firestore.FieldValue.increment(-1)
-     
-            }).then(() =>{
-                heart.className = "fa fa-heart-o ";
-            });
-        } 
-    
-    })
-}    
-

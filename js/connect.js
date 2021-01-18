@@ -5,12 +5,7 @@ firebase.auth().onAuthStateChanged(function(user)
         database.collection('allParty').onSnapshot((snapshot) => {
             setupParty(snapshot.docs);   
             setupUI(user);
-            likes(user);
-            pushData(user);
             check(user);
-            delect(user);
-            Edith(user);
-            
 
         }, err =>{
             console.log(err.message)
@@ -19,16 +14,14 @@ firebase.auth().onAuthStateChanged(function(user)
         setupParty([]);
         setupUI();
         check();
-        pushData();
-        delect();
-        Edith();
     }
 });
 
 var menuBtn = document.getElementById("menu-btn");
 var sidenav = document.querySelector(".sidenav");  
-var backArrow = document.querySelector(".fa-arrow-left");
-    
+var backArrow = document.querySelector(".fa-arrow-left");   
+
+// making the menu button functions to work only if we are on mobile screen size
 menuBtn.addEventListener('click', (e) => {
     e.preventDefault(); 
     if(window.matchMedia("(max-width: 767px)").matches){
@@ -84,11 +77,14 @@ const setupUI = (user) => {
         }
     }      
 
+ // closing and reseting all our open pup up's  
 function addNewParty_colse(){
     var Account_details = document.getElementById("Account-details");
     Account_details.style.display = "none"; 
     var pupModal = document.getElementById("pupModal");
     pupModal.style.display = "none";
+    document.getElementById("flier_img").src = '';
+    document.getElementById("poster").value = '';
     var party_form = document.getElementById("party_form");
     party_form.reset();
    
@@ -103,6 +99,7 @@ function addNewParty_colse(){
 
 
 
+// making an auths check state to knw which fonctionalities to show, change and vise vasal
 const add_flier = document.querySelector('#add-flier');
 
 function check(user) {
@@ -115,6 +112,7 @@ function check(user) {
                 myPartiesBtn.style.display = 'block';
                 accountDetailsSetup(doc);
                 id_To_edith();
+                
                 
             }else{
                 myPartiesBtn.style.display ='none';

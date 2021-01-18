@@ -242,14 +242,7 @@
         height: 97%;
     }
 
-    .rating img{
-        width: 20px;
-        height: 20px;
-        right: 3%;
-        cursor: pointer;
-    }
-
-    .rate-stars{
+    .rating i{
         color:#ff4c68;
     }
 
