@@ -14,8 +14,9 @@ createInfo.addEventListener("submit", (e) => {
         createInfo.reset();
         window.location.href = "main.html";
     }).then(() =>{
-         
         alert("sign in successfull");
+    }).catch(error => {
+        alert(error.message);
     });
 
 });

@@ -15,9 +15,11 @@
          loginInfo.reset();
          window.location.href = "main.html";
      }).then(() =>{
-
          alert("log in successfull");
-     });
+     }).catch(error => {
+         
+        alert(error.message);
+    });
  
  });
            

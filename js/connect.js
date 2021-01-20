@@ -1,7 +1,5 @@
+/*
 
-firebase.auth().onAuthStateChanged(function(user)
-{
-    if(user){
         database.collection('allParty').onSnapshot((snapshot) => {
             setupParty(snapshot.docs);   
             setupUI(user);
@@ -15,7 +13,36 @@ firebase.auth().onAuthStateChanged(function(user)
         setupUI();
         check();
     }
+*/ 
+firebase.auth().onAuthStateChanged(function(user)
+{
+    if(user){ 
+        database.collection('allParty').get().then(function(querySnapshot) {
+                 setupParty(querySnapshot);   
+                 setupUI(user);
+                 check(user);
+         
+        }).catch(function(error) {
+            alert("Error getting documents: ", error);
+            console.log("Error getting documents: ", error);
+        }); 
+    }else{
+        setupParty([]);
+        setupUI();
+        check();
+    }
 });
+
+function refresh(user){
+    database.collection('allParty').onSnapshot((snapshot) => {
+        setupParty(snapshot.docs);
+        setupUI(user);
+        check(user);   
+    }, err =>{
+        alert("Error getting documents: ", error)
+        console.log(err.message)
+    }); 
+}
 
 var menuBtn = document.getElementById("menu-btn");
 var sidenav = document.querySelector(".sidenav");  

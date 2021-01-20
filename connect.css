@@ -250,7 +250,6 @@
        right: -55%;
        top: -3px;
        position: relative;
-       font-size: 50px;
        color:#ff4c68;
        cursor: pointer;
     }
@@ -359,6 +358,20 @@
     }
 
     #pupModal #creatPartyBtn{
+        padding: 12px 20px;
+        width: 150px;
+        background:#ff4c68;
+        color: white;
+        font-size: 20px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 50px;
+        margin-top: 10px;
+    }
+
+    #pupModal #edith{
         padding: 12px 20px;
         width: 150px;
         background:#ff4c68;
@@ -677,6 +690,17 @@
             top: 10px;
             right: 10%;
         }
+
+        .fa-heart{
+            right: -1%;
+            top: 20px;
+         }
+     
+         .fa-heart-o{
+            right: -1%;
+            top: 20px;
+           
+         }
         
         
         /* all account details */ 

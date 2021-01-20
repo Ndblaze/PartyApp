@@ -58,7 +58,7 @@ creatPartyBtn.addEventListener("submit", (e) => {
 
                 alert(error.message);
             });
-
+            refresh(user);
             addNewParty_colse();
         }
          
@@ -87,8 +87,8 @@ function uploead_to_allParty(user, title_p, discription_p, location_p, phone_num
          
         listOfLikedUsers: []    
         
-    }).then(() =>{
-      
+    }).then(() =>{ 
+
     }).catch(function(error) {
         console.error("Error adding document: ", error);
         return false;
@@ -208,6 +208,8 @@ const setupParty = (data) => {
     let html= '';
     data.forEach(doc => {
         const party = doc.data();
+        var myLikes = check_array(party);
+    
         var imgLink = party.private.link;
         
         const row = `
@@ -233,7 +235,7 @@ const setupParty = (data) => {
                             <i class="fa fa-star " ></i>
                             <i class="fa fa-star " ></i>
                             <i class="fa fa-star-o " ></i>
-                            <i class="fa fa-heart-o "  id="${party.public.post_uid}" onClick="getPostId (this.id)">  <span>${party.public.likes}</span></i>
+                            <p id="${party.public.post_uid}" onClick="getPostId (this.id)"><i class="fa fa-heart-o"> ${myLikes}</i> </p>
                        </div>
                    </div>
                </div>
@@ -241,25 +243,31 @@ const setupParty = (data) => {
          `;
         
          html += row 
-         query_for_user_likes(party.private.userId)
+         query_for_user_likes();
     }); 
     partyContainer.innerHTML = html; 
     
     
 }
 
-function query_for_user_likes(doc){
+function query_for_user_likes(){
     var user = auth.currentUser;
     database.collection("allParty").where("listOfLikedUsers", "array-contains", user.uid).get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
             // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id);
-            document.getElementById(doc.id).className = "fa fa-heart";
+        if(window.matchMedia("(max-width: 767px)").matches){
+            document.getElementById(doc.id).getElementsByTagName('i')[0].className = "fa fa-heart";
+        }else{
+            document.getElementById(doc.id).getElementsByTagName('i')[0].className = "fa fa-heart fa-2x";
+        }
+           
+
         });
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
+        alert("Error getting documents: ", error);
     });
    
 }
@@ -311,18 +319,25 @@ const accountDetailsSetup = (doc) => {
 const Edith_party = document.querySelector('#Edith_party');
 
 Edith_party.addEventListener("click", (e) => {
-e.preventDefault();   
+e.preventDefault();  
+    const EdithPartyBtn = document.querySelector('#edith'); 
+
+    EdithPartyBtn.innerHTML = 'Edith Party';
+
     Account_details.style.display = "none";
+
     pupModal.style.display = "flex";
+
     var user = auth.currentUser;
-    Edith(user);
+
+    Edith(user, EdithPartyBtn);
 });   
 
-const Edith = (user) => {
+const Edith = (user, EdithPartyBtn) => {
     
-    const EdithPartyBtn = document.querySelector('#edith');
-    EdithPartyBtn.addEventListener("submit", (e) => {
+   EdithPartyBtn.addEventListener("submit", (e) => {
         e.preventDefault();
+
            checkInput();
 
             if(checkInput() == true ){
@@ -333,7 +348,7 @@ const Edith = (user) => {
                 var gateFee_update = gateFee_p.value;
                 
                 // deleting the old pic to use a new one -------
-                  storageDelect(user);
+                storageDelect(user);
 
                 const task = firebase.storage().ref('posters/' + user.uid + '/'+ file_name).put(file);
                 task.then(snapshot => snapshot.ref.getDownloadURL()).then(url => {
@@ -347,14 +362,7 @@ const Edith = (user) => {
                         phone_number: phone_number_update,
                         gateFee: gateFee_update,
                         link: posterURL,
-                    },
-                    public : {
-                        defualt_rating: 20,
-                        post_uid: user.uid,
-                        likes: 0,
-                        },
-                     
-                    listOfLikedUsers: []
+                    }
                 
                 }); 
 
@@ -363,7 +371,7 @@ const Edith = (user) => {
                     }).catch(error => {
                         alert(error.message);
                     });
-
+                    refresh(user)
                     addNewParty_colse();
          
             } 
@@ -378,9 +386,9 @@ const delect_party = document.querySelector('#delect_party');
 
 delect_party.addEventListener("click", (e) => {
     e.preventDefault();
-    var user = auth.currentUser;    
+    var user = auth.currentUser;
+        if(warning() === true){
             database.collection("allParty").doc(user.uid).delete().then(function() {
-                console.log("Party successfully deleted!");
                 addNewParty_colse();
                 alert("Party successfully deleted!");
 
@@ -389,6 +397,10 @@ delect_party.addEventListener("click", (e) => {
             });
             
             storageDelect(user);
+            refresh(user);
+        }  else{
+            addNewParty_colse();
+        }  
 })
 
 
@@ -406,5 +418,8 @@ function storageDelect(user) {
     
 }
 
-
+function warning(){
+    var reply = confirm('are you sure you want to perform this action');
+    return reply ;
+}
 
