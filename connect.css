@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    
 }
 
 .sidenav{
@@ -246,9 +247,13 @@
         color:#ff4c68;
     }
 
+    .rating p{
+        display: inline;
+    }
+
     .fa-heart{
        right: -55%;
-       top: -3px;
+       top: 0;
        position: relative;
        color:#ff4c68;
        cursor: pointer;
@@ -256,9 +261,8 @@
 
     .fa-heart-o{
        right: -55%;
-       top: -3px;
+       top: 0;
        position: relative;
-       font-size: 50px;
        color:#ff4c68;
        cursor: pointer;
     }
@@ -672,6 +676,20 @@
             color: #ff4c68;
         }
 
+        .rating p{
+            display: block;
+        }
+
+        .fa-heart{
+            right: -1%;
+            top: 20px;
+         }
+     
+        .fa-heart-o{
+            right: -1%;
+            top: 20px;
+         }
+
 /* -------------------------------pupmodal section ------------------------*/
 
         .modal-content{
@@ -690,17 +708,6 @@
             top: 10px;
             right: 10%;
         }
-
-        .fa-heart{
-            right: -1%;
-            top: 20px;
-         }
-     
-         .fa-heart-o{
-            right: -1%;
-            top: 20px;
-           
-         }
         
         
         /* all account details */ 
